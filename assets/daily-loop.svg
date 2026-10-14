@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="1200" height="380" role="img" aria-label="Jibe daily loop: start-branch, spec, clear, plan-feature, build, ship, open-pr, with learn feeding lessons back">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d3a"/>
+      <stop offset="1" stop-color="#0b1329"/>
+    </linearGradient>
+    <marker id="ac" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ff6b47"/>
+    </marker>
+    <marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2ec4b6"/>
+    </marker>
+    <style>
+      .t  { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #eef1f8; }
+      .sub{ font-size: 14px; fill: #9fb0d6; }
+      .cmd{ font-size: 15px; font-weight: 700; fill: #2ec4b6; }
+      .d  { font-size: 12.5px; fill: #b8c4e0; }
+      .n  { font-size: 13px; font-weight: 700; fill: #0b1329; }
+      .card { fill: #16264a; stroke: #2a3d6b; stroke-width: 1.5; }
+      .hl   { fill: #1b2f5c; stroke: #ff6b47; stroke-width: 2; }
+      .lbl  { font-size: 12px; fill: #8fd9d0; font-style: italic; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="380" rx="22" fill="url(#bg)"/>
+  <text x="32" y="44" class="t h1">The daily loop</text>
+  <text x="32" y="68" class="t sub">Spec first, plan in small test-first tasks, ship through a fresh-context review gate.</text>
+
+  <!-- steps: x = 28 + i*166, width 148 -->
+  <g>
+    <rect x="28" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="50" cy="118" r="12" fill="#2ec4b6"/><text x="50" y="123" text-anchor="middle" class="t n">1</text>
+    <text x="102" y="160" text-anchor="middle" class="m cmd">/start-branch</text>
+    <text x="102" y="184" text-anchor="middle" class="t d">feature/ · bugfix/</text>
+    <text x="102" y="201" text-anchor="middle" class="t d">hot-fix/ from right base</text>
+  </g>
+  <g>
+    <rect x="194" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="216" cy="118" r="12" fill="#2ec4b6"/><text x="216" y="123" text-anchor="middle" class="t n">2</text>
+    <text x="268" y="160" text-anchor="middle" class="m cmd">/spec</text>
+    <text x="268" y="184" text-anchor="middle" class="t d">Claude interviews you</text>
+    <text x="268" y="201" text-anchor="middle" class="t d">→ docs/specs/</text>
+  </g>
+  <g>
+    <rect x="360" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="382" cy="118" r="12" fill="#2ec4b6"/><text x="382" y="123" text-anchor="middle" class="t n">3</text>
+    <text x="434" y="160" text-anchor="middle" class="m cmd">/clear</text>
+    <text x="434" y="184" text-anchor="middle" class="t d">fresh context</text>
+    <text x="434" y="201" text-anchor="middle" class="t d">just for building</text>
+  </g>
+  <g>
+    <rect x="526" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="548" cy="118" r="12" fill="#2ec4b6"/><text x="548" y="123" text-anchor="middle" class="t n">4</text>
+    <text x="600" y="160" text-anchor="middle" class="m cmd">/plan-feature</text>
+    <text x="600" y="184" text-anchor="middle" class="t d">architect agent</text>
+    <text x="600" y="201" text-anchor="middle" class="t d">→ small TDD tasks</text>
+  </g>
+  <g>
+    <rect x="692" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="714" cy="118" r="12" fill="#2ec4b6"/><text x="714" y="123" text-anchor="middle" class="t n">5</text>
+    <text x="766" y="160" text-anchor="middle" class="t" style="font-size:15px;font-weight:700;fill:#eef1f8">Build</text>
+    <text x="766" y="184" text-anchor="middle" class="m" style="font-size:12px;fill:#2ec4b6">/new-endpoint</text>
+    <text x="766" y="201" text-anchor="middle" class="t d">/new-page · test first</text>
+  </g>
+  <g>
+    <rect x="858" y="96" width="148" height="120" rx="14" class="hl"/>
+    <circle cx="880" cy="118" r="12" fill="#ff6b47"/><text x="880" y="123" text-anchor="middle" class="t n">6</text>
+    <text x="932" y="160" text-anchor="middle" class="m cmd" style="fill:#ff8a6b">/ship</text>
+    <text x="932" y="184" text-anchor="middle" class="t d">all checks + 4</text>
+    <text x="932" y="201" text-anchor="middle" class="t d">parallel reviewers</text>
+  </g>
+  <g>
+    <rect x="1024" y="96" width="148" height="120" rx="14" class="card"/>
+    <circle cx="1046" cy="118" r="12" fill="#2ec4b6"/><text x="1046" y="123" text-anchor="middle" class="t n">7</text>
+    <text x="1098" y="160" text-anchor="middle" class="m cmd">/open-pr</text>
+    <text x="1098" y="184" text-anchor="middle" class="t d">pushes only after</text>
+    <text x="1098" y="201" text-anchor="middle" class="t d">you say yes</text>
+  </g>
+
+  <!-- forward arrows -->
+  <g stroke="#ff6b47" stroke-width="2.5" fill="none" marker-end="url(#ac)">
+    <line x1="178" y1="156" x2="191" y2="156"/>
+    <line x1="344" y1="156" x2="357" y2="156"/>
+    <line x1="510" y1="156" x2="523" y2="156"/>
+    <line x1="676" y1="156" x2="689" y2="156"/>
+    <line x1="842" y1="156" x2="855" y2="156"/>
+    <line x1="1008" y1="156" x2="1021" y2="156"/>
+  </g>
+
+  <!-- learn feedback loop -->
+  <g stroke="#2ec4b6" stroke-width="2" fill="none" stroke-dasharray="6 6">
+    <path d="M766,218 C766,250 780,268 800,282" marker-end="url(#at)"/>
+    <path d="M932,218 C932,250 910,268 880,282" marker-end="url(#at)"/>
+    <path d="M598,308 C380,308 102,300 102,222" marker-end="url(#at)"/>
+  </g>
+  <text x="704" y="252" text-anchor="end" class="t lbl">you corrected Claude</text>
+  <text x="944" y="252" class="t lbl">review findings</text>
+  <text x="330" y="338" text-anchor="middle" class="t lbl">sharper CLAUDE.md, rules and hooks for every next task</text>
+
+  <rect x="600" y="286" width="400" height="46" rx="23" fill="#0f2a33" stroke="#2ec4b6" stroke-width="2"/>
+  <text x="626" y="315" class="m" style="font-size:16px;font-weight:700;fill:#2ec4b6">/learn</text>
+  <text x="694" y="314" class="t" style="font-size:13.5px;fill:#cfe9e5">every correction becomes a permanent rule</text>
+</svg>

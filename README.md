@@ -1,6 +1,13 @@
-# Jibe
+<p align="center">
+  <img src="assets/jibe-banner.png" alt="Jibe - a Claude Code setup that fits your stack and ships fast" width="100%">
+</p>
 
-**A Claude Code setup that fits your stack and ships fast.**
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg"></a>
+  <img alt="Claude Code" src="https://img.shields.io/badge/Claude%20Code-ready-d97757">
+  <img alt="Node 20+" src="https://img.shields.io/badge/node-%E2%89%A520-339933">
+  <img alt="Platforms" src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey">
+</p>
 
 > *jibe* (verb): **1.** to swing a sailing boat decisively onto a new course. **2.** to fit or agree with something ("that jibes with how we work").
 
@@ -11,6 +18,14 @@ Jibe is a drop-in setup for [Claude Code](https://code.claude.com) on full-stack
 - **Safe by default:** hooks block force pushes, `reset --hard`, `--no-verify`, destructive SQL, edits to secrets, lockfiles and generated code. Claude asks before pushing or applying migrations.
 - **Your git conventions:** `feature/`, `bugfix/`, `hot-fix/`... branches with matching commit prefixes, and no AI attribution in commits or PRs.
 
+## How it works
+
+1. **Install** with `install.sh` / `install.ps1`, which copies `CLAUDE.md` and `.claude/` into your project and never overwrites anything.
+2. **Tailor** with `/adapt-setup`, which fills the real commands, versions, branches and rules from your repo.
+3. **Work** in the daily loop below.
+
+`/adapt-setup` reads your manifests and CI config, fills every `TODO(setup)` marker, verifies the commands by running them, and removes whatever doesn't apply to your stack.
+
 ## Requirements
 
 - [Claude Code](https://code.claude.com)
@@ -20,7 +35,7 @@ Jibe is a drop-in setup for [Claude Code](https://code.claude.com) on full-stack
 ## Quick start
 
 ```bash
-git clone <this-repo-url> jibe
+git clone https://github.com/sumsam-ali-sac/jibe
 cd jibe
 
 # macOS / Linux / Git Bash
@@ -36,9 +51,65 @@ Then open your project in Claude Code (accept the folder-trust prompt, since pre
 /adapt-setup
 ```
 
-It fills every `TODO(setup)` marker in `CLAUDE.md` from your manifests and CI config, verifies the commands by running them, tunes permissions, and removes rules for parts of the stack you don't have. Prefer to do it by hand? Follow [guides/SETUP-GUIDE.md](guides/SETUP-GUIDE.md), which has one section per marker.
+Prefer to do it by hand? Follow [guides/SETUP-GUIDE.md](guides/SETUP-GUIDE.md), which has one section per marker. If your project already has a `CLAUDE.md` or `.claude/settings.json`, Jibe's version is saved next to it (`*.starter.*`) and `/adapt-setup` merges it in.
 
-The installer never overwrites. If your project already has a `CLAUDE.md` or `.claude/settings.json`, Jibe's version is saved next to it (`*.starter.*`) and `/adapt-setup` merges it in.
+## The daily loop
+
+<p align="center">
+  <img src="assets/daily-loop.svg" alt="The daily loop: start-branch, spec, clear, plan-feature, build, ship, open-pr; /learn turns corrections into permanent rules" width="100%">
+</p>
+
+```
+/start-branch feature PROJ-142 order cancellation
+/spec order cancellation                  -> docs/specs/order-cancellation.md
+/clear
+/plan-feature docs/specs/order-cancellation.md   -> docs/plans/order-cancellation.md
+/db-migration ... | /new-endpoint ... | /new-page ... | "execute task N"
+/ship docs/plans/order-cancellation.md    -> checks + parallel reviews + commits
+/open-pr
+/learn <anything you had to correct>
+```
+
+A full worked example is in [guides/WORKFLOW-GUIDE.md](guides/WORKFLOW-GUIDE.md).
+
+## What loads when
+
+Claude's context window is its most precious resource, so Jibe loads as little as possible up front and the rest only when it's relevant.
+
+<p align="center">
+  <img src="assets/what-loads-when.svg" alt="What loads when: always-on context, on-demand rules, skills and subagents, and hooks on every tool call" width="100%">
+</p>
+
+## Guard rails in action
+
+Hooks are deterministic: they run on every matching tool call, whatever the model decides.
+
+<p align="center">
+  <img src="assets/guard-rails.svg" alt="Guard rails: force push, generated-client writes and .env edits are blocked; source edits are allowed and auto-formatted" width="100%">
+</p>
+
+## The /ship quality gate
+
+<p align="center">
+  <img src="assets/ship-gate.svg" alt="/ship: checks, four parallel fresh-context reviewers, fixes, commit, then a PR only after you approve" width="100%">
+</p>
+
+## Git conventions
+
+| Branch | Commit prefix | From -> into |
+|---|---|---|
+| `feature/PROJ-1-short-desc` | `feature:` | integration -> integration |
+| `bugfix/...` | `bugfix:` | integration -> integration |
+| `hot-fix/...` | `hot-fix:` | **production -> production**, then merged back |
+| `refactor/` `chore/` `docs/` `test/` `release/` | same as prefix | integration -> integration |
+
+The hot-fix flow, which `/hot-fix` runs for you:
+
+<p align="center">
+  <img src="assets/hot-fix-flow.svg" alt="Hot-fix flow: branch from production, test and minimal fix, release a patch, merge back into integration" width="100%">
+</p>
+
+The full rules are in [guides/GIT-WORKFLOW.md](guides/GIT-WORKFLOW.md).
 
 ## What's inside
 
@@ -69,32 +140,6 @@ install.sh / install.ps1
 ```
 
 See [template/.claude/README.md](template/.claude/README.md) for a table of every command, agent and hook.
-
-## Daily workflow
-
-```
-/start-branch feature PROJ-142 order cancellation
-/spec order cancellation                  -> docs/specs/order-cancellation.md
-/clear
-/plan-feature docs/specs/order-cancellation.md   -> docs/plans/order-cancellation.md
-/db-migration ... | /new-endpoint ... | /new-page ... | "execute task N"
-/ship docs/plans/order-cancellation.md    -> checks + parallel reviews + commits
-/open-pr
-/learn <anything you had to correct>
-```
-
-Details are in [guides/WORKFLOW-GUIDE.md](guides/WORKFLOW-GUIDE.md).
-
-## Git conventions
-
-| Branch | Commit prefix | From -> into |
-|---|---|---|
-| `feature/PROJ-1-short-desc` | `feature:` | integration -> integration |
-| `bugfix/...` | `bugfix:` | integration -> integration |
-| `hot-fix/...` | `hot-fix:` | **production -> production**, then merged back |
-| `refactor/` `chore/` `docs/` `test/` `release/` | same as prefix | integration -> integration |
-
-The full rules are in [guides/GIT-WORKFLOW.md](guides/GIT-WORKFLOW.md).
 
 ## Personal vs project configuration
 

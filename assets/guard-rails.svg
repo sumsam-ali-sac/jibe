@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Guard rails: force push, writing the generated client and editing .env are blocked by hooks; editing a source file is allowed and auto-formatted">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d3a"/>
+      <stop offset="1" stop-color="#0b1329"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff6b47" stop-opacity="0.05"/>
+      <stop offset="0.5" stop-color="#ff6b47" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ff6b47" stop-opacity="0.05"/>
+    </linearGradient>
+    <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6f9e"/>
+    </marker>
+    <marker id="at" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2ec4b6"/>
+    </marker>
+    <style>
+      .t  { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #eef1f8; }
+      .sub{ font-size: 14px; fill: #9fb0d6; }
+      .act{ fill: #16264a; stroke: #2a3d6b; stroke-width: 1.5; }
+      .ac { font-size: 14px; fill: #eef1f8; }
+      .colh{ font-size: 12.5px; font-weight: 800; letter-spacing: 1.5px; fill: #9fb0d6; }
+      .badge { font-size: 12px; font-weight: 800; letter-spacing: 1px; }
+      .why { font-size: 13.5px; fill: #d5ddef; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="400" rx="22" fill="url(#bg)"/>
+  <text x="32" y="44" class="t h1">Guard rails in action</text>
+  <text x="32" y="68" class="t sub">Hooks run on every matching tool call, whatever the model decides. Verified in a live session.</text>
+
+  <text x="40" y="108" class="t colh">CLAUDE TRIES</text>
+  <text x="600" y="108" text-anchor="middle" class="t colh" style="fill:#ff8a6b">HOOK LAYER</text>
+  <text x="790" y="108" class="t colh">OUTCOME</text>
+
+  <!-- hook band -->
+  <rect x="520" y="118" width="160" height="262" rx="14" fill="url(#band)" stroke="#ff6b47" stroke-opacity="0.45" stroke-dasharray="5 5"/>
+
+  <!-- rows: y centers 150, 210, 270, 330 -->
+  <g>
+    <rect x="28" y="128" width="452" height="44" rx="10" class="act"/>
+    <text x="46" y="155" class="m ac">git push --force origin main</text>
+    <line x1="482" y1="150" x2="584" y2="150" stroke="#5b6f9e" stroke-width="2"/>
+    <circle cx="600" cy="150" r="15" fill="#ff6b47"/>
+    <path d="M593,143 L607,157 M607,143 L593,157" stroke="#0b1329" stroke-width="3" stroke-linecap="round"/>
+    <rect x="790" y="136" width="86" height="28" rx="14" fill="#3a1c1a" stroke="#ff6b47"/>
+    <text x="833" y="155" text-anchor="middle" class="t badge" fill="#ff8a6b">BLOCKED</text>
+    <text x="890" y="155" class="t why">force push: ask the user first</text>
+  </g>
+  <g>
+    <rect x="28" y="188" width="452" height="44" rx="10" class="act"/>
+    <text x="46" y="215" class="m ac">Write lib/api/generated/types.gen.ts</text>
+    <line x1="482" y1="210" x2="584" y2="210" stroke="#5b6f9e" stroke-width="2"/>
+    <circle cx="600" cy="210" r="15" fill="#ff6b47"/>
+    <path d="M593,203 L607,217 M607,203 L593,217" stroke="#0b1329" stroke-width="3" stroke-linecap="round"/>
+    <rect x="790" y="196" width="86" height="28" rx="14" fill="#3a1c1a" stroke="#ff6b47"/>
+    <text x="833" y="215" text-anchor="middle" class="t badge" fill="#ff8a6b">BLOCKED</text>
+    <text x="890" y="215" class="t why">regenerate the client from OpenAPI</text>
+  </g>
+  <g>
+    <rect x="28" y="248" width="452" height="44" rx="10" class="act"/>
+    <text x="46" y="275" class="m ac">Edit backend/.env</text>
+    <line x1="482" y1="270" x2="584" y2="270" stroke="#5b6f9e" stroke-width="2"/>
+    <circle cx="600" cy="270" r="15" fill="#ff6b47"/>
+    <path d="M593,263 L607,277 M607,263 L593,277" stroke="#0b1329" stroke-width="3" stroke-linecap="round"/>
+    <rect x="790" y="256" width="86" height="28" rx="14" fill="#3a1c1a" stroke="#ff6b47"/>
+    <text x="833" y="275" text-anchor="middle" class="t badge" fill="#ff8a6b">BLOCKED</text>
+    <text x="890" y="275" class="t why">secrets are never read or edited</text>
+  </g>
+  <g>
+    <rect x="28" y="308" width="452" height="44" rx="10" class="act" style="stroke:#2ec4b6"/>
+    <text x="46" y="335" class="m ac">Edit backend/app/api/orders.py</text>
+    <line x1="482" y1="330" x2="584" y2="330" stroke="#2ec4b6" stroke-width="2"/>
+    <circle cx="600" cy="330" r="15" fill="#2ec4b6"/>
+    <path d="M592,330 L598,336 L609,324" stroke="#0b1329" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="616" y1="330" x2="782" y2="330" stroke="#2ec4b6" stroke-width="2" marker-end="url(#at)"/>
+    <rect x="790" y="316" width="86" height="28" rx="14" fill="#0f2f33" stroke="#2ec4b6"/>
+    <text x="833" y="335" text-anchor="middle" class="t badge" fill="#2ec4b6">ALLOWED</text>
+    <text x="890" y="335" class="t why">then auto-formatted with your ruff</text>
+  </g>
+  <!-- blocked rows return to Claude -->
+  <g stroke="#ff6b47" stroke-width="1.5" stroke-opacity="0.55" fill="none" stroke-dasharray="4 5">
+    <path d="M616,150 L782,150"/>
+    <path d="M616,210 L782,210"/>
+    <path d="M616,270 L782,270"/>
+  </g>
+</svg>

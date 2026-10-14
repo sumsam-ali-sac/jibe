@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 450" width="1200" height="450" role="img" aria-label="What loads when: CLAUDE.md, code-quality rule and session-start hook every session; backend rules, frontend rules, skills and subagents only when relevant; hooks and permissions on every tool call">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111d3a"/>
+      <stop offset="1" stop-color="#0b1329"/>
+    </linearGradient>
+    <style>
+      .t  { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; }
+      .m  { font-family: ui-monospace, SFMono-Regular, Consolas, Menlo, monospace; }
+      .h1 { font-size: 22px; font-weight: 700; fill: #eef1f8; }
+      .sub{ font-size: 14px; fill: #9fb0d6; }
+      .col{ fill: #132244; stroke: #24365f; stroke-width: 1.5; }
+      .card{ fill: #1a2c55; }
+      .ct { font-size: 15px; font-weight: 700; fill: #eef1f8; }
+      .cd { font-size: 12.5px; fill: #b8c4e0; }
+      .hd { font-size: 13px; font-weight: 800; letter-spacing: 1.5px; }
+      .hs { font-size: 12.5px; fill: #9fb0d6; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="450" rx="22" fill="url(#bg)"/>
+  <text x="32" y="44" class="t h1">What loads when</text>
+  <text x="32" y="68" class="t sub">A small always-on context; everything else loads only when it's relevant, so Claude stays sharp in long sessions.</text>
+
+  <!-- Column 1: every session -->
+  <rect x="28" y="88" width="368" height="340" rx="16" class="col"/>
+  <rect x="28" y="88" width="368" height="5" rx="2" fill="#2ec4b6"/>
+  <text x="48" y="122" class="t hd" fill="#2ec4b6">EVERY SESSION</text>
+  <text x="48" y="142" class="t hs">always in context, kept short</text>
+  <g>
+    <rect x="44" y="158" width="336" height="62" rx="10" class="card"/>
+    <rect x="44" y="158" width="4" height="62" rx="2" fill="#2ec4b6"/>
+    <text x="62" y="184" class="m ct">CLAUDE.md</text>
+    <text x="62" y="206" class="t cd">stack, versions, commands, git conventions</text>
+  </g>
+  <g>
+    <rect x="44" y="232" width="336" height="62" rx="10" class="card"/>
+    <rect x="44" y="232" width="4" height="62" rx="2" fill="#2ec4b6"/>
+    <text x="62" y="258" class="m ct">rules/code-quality.md</text>
+    <text x="62" y="280" class="t cd">the one always-on quality and security rule</text>
+  </g>
+  <g>
+    <rect x="44" y="306" width="336" height="62" rx="10" class="card"/>
+    <rect x="44" y="306" width="4" height="62" rx="2" fill="#2ec4b6"/>
+    <text x="62" y="332" class="t ct">session-start hook</text>
+    <text x="62" y="354" class="t cd">git snapshot + unfilled TODO(setup) reminder</text>
+  </g>
+
+  <!-- Column 2: only when relevant -->
+  <rect x="416" y="88" width="368" height="340" rx="16" class="col"/>
+  <rect x="416" y="88" width="368" height="5" rx="2" fill="#ffb347"/>
+  <text x="436" y="122" class="t hd" fill="#ffb347">ONLY WHEN RELEVANT</text>
+  <text x="436" y="142" class="t hs">loaded on demand, zero cost otherwise</text>
+  <g>
+    <rect x="432" y="158" width="336" height="56" rx="10" class="card"/>
+    <rect x="432" y="158" width="4" height="56" rx="2" fill="#ffb347"/>
+    <text x="450" y="182" class="t ct">Backend rules</text>
+    <text x="450" y="202" class="t cd">when API, data or migration files are touched</text>
+  </g>
+  <g>
+    <rect x="432" y="222" width="336" height="56" rx="10" class="card"/>
+    <rect x="432" y="222" width="4" height="56" rx="2" fill="#ffb347"/>
+    <text x="450" y="246" class="t ct">Frontend rules</text>
+    <text x="450" y="266" class="t cd">when pages or components are touched</text>
+  </g>
+  <g>
+    <rect x="432" y="286" width="336" height="56" rx="10" class="card"/>
+    <rect x="432" y="286" width="4" height="56" rx="2" fill="#ffb347"/>
+    <text x="450" y="310" class="t ct">15 skills</text>
+    <text x="450" y="330" class="t cd">when you type a /command</text>
+  </g>
+  <g>
+    <rect x="432" y="350" width="336" height="56" rx="10" class="card"/>
+    <rect x="432" y="350" width="4" height="56" rx="2" fill="#ffb347"/>
+    <text x="450" y="374" class="t ct">9 subagents</text>
+    <text x="450" y="394" class="t cd">own context window, return only a summary</text>
+  </g>
+
+  <!-- Column 3: every tool call -->
+  <rect x="804" y="88" width="368" height="340" rx="16" class="col"/>
+  <rect x="804" y="88" width="368" height="5" rx="2" fill="#ff6b47"/>
+  <text x="824" y="122" class="t hd" fill="#ff6b47">EVERY TOOL CALL</text>
+  <text x="824" y="142" class="t hs">deterministic, the model can't skip them</text>
+  <g>
+    <rect x="820" y="158" width="336" height="56" rx="10" class="card"/>
+    <rect x="820" y="158" width="4" height="56" rx="2" fill="#ff6b47"/>
+    <text x="838" y="182" class="m ct">block-dangerous</text>
+    <text x="838" y="202" class="t cd">force push, reset --hard, --no-verify, DROP…</text>
+  </g>
+  <g>
+    <rect x="820" y="222" width="336" height="56" rx="10" class="card"/>
+    <rect x="820" y="222" width="4" height="56" rx="2" fill="#ff6b47"/>
+    <text x="838" y="246" class="m ct">protect-files</text>
+    <text x="838" y="266" class="t cd">.env, keys, lockfiles, generated API client</text>
+  </g>
+  <g>
+    <rect x="820" y="286" width="336" height="56" rx="10" class="card"/>
+    <rect x="820" y="286" width="4" height="56" rx="2" fill="#ff6b47"/>
+    <text x="838" y="310" class="m ct">format-on-edit</text>
+    <text x="838" y="330" class="t cd">your project's own formatter, after each edit</text>
+  </g>
+  <g>
+    <rect x="820" y="350" width="336" height="56" rx="10" class="card"/>
+    <rect x="820" y="350" width="4" height="56" rx="2" fill="#ff6b47"/>
+    <text x="838" y="374" class="t ct">Permissions</text>
+    <text x="838" y="394" class="t cd">allow routine · ask before push · deny secrets</text>
+  </g>
+</svg>
