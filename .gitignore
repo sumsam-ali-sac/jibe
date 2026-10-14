@@ -1,0 +1,17 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Logs and temp
+*.log
+tmp/
+.tmp/
+
+# Local Claude Code files (never publish personal settings)
+CLAUDE.local.md
+.claude/settings.local.json
+.claude/worktrees/

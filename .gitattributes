@@ -1,0 +1,9 @@
+* text=auto
+
+# Scripts must keep their native line endings or they break on the other OS.
+*.sh   text eol=lf
+*.mjs  text eol=lf
+*.ps1  text eol=crlf
+
+*.md   text eol=lf
+*.json text eol=lf

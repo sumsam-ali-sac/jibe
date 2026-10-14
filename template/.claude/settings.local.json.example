@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker compose ps*)",
+      "Bash(docker compose logs*)"
+    ]
+  },
+  "env": {
+    "EXAMPLE_LOCAL_FLAG": "1"
+  }
+}
